@@ -1,7 +1,7 @@
 # 1. 기본 이미지로 OpenJDK 사용 (Spring Boot는 Java 기반)
 FROM openjdk:17-jdk-slim
 
-# 2. 작업 디렉토리 설정
+# 2. 작업 디렉토리 설정..
 WORKDIR /app
 
 # 3. 빌드된 JAR 파일을 컨테이너의 /app 디렉토리로 복사
