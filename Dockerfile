@@ -1,4 +1,4 @@
-# 1. 기본 이미지로 OpenJDK 사용 (Spring Boot는 Java 기반)..
+# 1. 기본 이미지로 OpenJDK 사용 (Spring Boot는 Java 기반)...1
 FROM openjdk:17-jdk-slim
 
 # 2. 작업 디렉토리 설정.
