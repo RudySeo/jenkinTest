@@ -1,14 +1,18 @@
-# 1. 기본 이미지로 OpenJDK 사용 (Spring Boot는 Java 기반)
-FROM openjdk:17-jdk-slim
+## 베이스 이미지로 Java 17버전이 포함된 Docker 이미지를 사용1
+FROM bellsoft/liberica-openjdk-alpine:17
 
-# 2. 작업 디렉토리 설정
-WORKDIR /app
+## Gradle을 사용해 빌드를 실행하는 명령어
+CMD ["./gradlew", "clean", "build"]
 
-# 3. 빌드된 JAR 파일을 컨테이너의 /app 디렉토리로 복사
-COPY target/myapp.jar /app/myapp.jar
 
-# 4. 애플리케이션이 사용할 포트 (Spring Boot 기본 8080 포트)
-EXPOSE 8080
+## Gradle로 빌드한 jar 파일의 위치를 변수로 설정
+ARG JAR_FILE=build/libs/*.jar
 
-# 5. 컨테이너 시작 시 JAR 파일 실행
-ENTRYPOINT ["java", "-jar", "/app/myapp.jar"]
+## JAR_FILE 변수에 지정된 파일을 app.jar라는 이름으로 컨테이너에 추가
+COPY ${JAR_FILE} app.jar
+
+## 컨테이너가 사용할 포트를 설정, 이 경우에는 8080 포트를 사용
+EXPOSE 8083
+
+## 컨테이너가 실행될 때 기본적으로 실행될 명령어를 설정
+ENTRYPOINT ["java","-jar","/app.jar"]
