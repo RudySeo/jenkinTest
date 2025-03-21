@@ -7,7 +7,7 @@ pipeline {
                 // GitHub 저장소에서 코드를 체크아웃
                 git(
                     url: 'https://github.com/RudySeo/jenkinTest.git',
-                    credentialsId: 'my-github-credentials',  // GitHub 인증 정보 ID
+                    credentialsId: 'github',  // GitHub 인증 정보 ID
                     branch: '*/master',  // main 브랜치에서 체크아웃
                     changelog: false,
                     poll: false
