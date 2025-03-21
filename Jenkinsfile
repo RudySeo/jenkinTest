@@ -20,7 +20,7 @@ pipeline {
                 script {
                     // Gradle Wrapper로 빌드 실행 (테스트는 건너뛰고 빌드만 실행)
                     echo 'Building with Gradle...'
-                    sh './gradlew clean build -x test'  // 테스트는 건너뛰고 빌드만 실행
+                    sh './gradlew clean build -x test'  
                 }
             }
         }
